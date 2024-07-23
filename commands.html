@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>doremi - Commands</title>
+    <title>lilly - Commands</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -110,54 +110,43 @@
             <li>
                 <p><strong>avatar [user]</strong> - Gets the profile/avatar of you or the mentioned user.</p>
                 <pre><code>module.exports = {
-                    name: "avatar",
-                    $if: "old",
-                    code: `
-                  $color[#E6E6FA]
-                  $if[$mentioned[1]==]
-                  $author[$username's Avatar!]
-                  $image[$authorAvatar[2048]]
-                  $else
-                  $author[$username[$mentioned[1]]'s Avatar!]
-                  $image[$userAvatar[$mentioned[1];2048]]
-                  $endif
-                  $suppressErrors[{newEmbed:{description:Something went wrong!}{color:#E6E6FA}}]
-                  `,
-                };
-                </code></pre>
+    name: "avatar",
+    $if: "old",
+    code: `
+  $color[#E6E6FA]
+  $if[$mentioned[1]==]
+  $author[$username's Avatar!]
+  $image[$authorAvatar[2048]]
+  $else
+  $author[$username[$mentioned[1]]'s Avatar!]
+  $image[$userAvatar[$mentioned[1];2048]]
+  $endif
+  $suppressErrors[{newEmbed:{description:Something went wrong!}{color:#E6E6FA}}]
+  `,
+};</code></pre>
                 <button class="copy-btn">Copy</button>
             </li>
             <li>
                 <p><strong>servericon</strong> - Gets the guild's icon.</p>
                 <pre><code>module.exports = {
-                    name: "servericon",
-                    code: `
-                    $color[#E6E6FA]
-                    $author[$guildName[$guildID]'s Icon!]
-                    $image[$guildIcon[$guildID]]
-                    `,
-                  };
-                  </code></pre>
+    name: "servericon",
+    code: `
+    $color[#E6E6FA]
+    $author[$guildName[$guildID]'s Icon!]
+    $image[$guildIcon[$guildID]]
+    `,
+  };</code></pre>
                 <button class="copy-btn">Copy</button>
             </li>
             <li>
                 <p><strong>ping</strong> - Gets a response with the latency.</p>
                 <pre><code>client.command({
-                    name: "ping",
-                    code: 'Pong! $pingms'
-                  });</code></pre>
+    name: "ping",
+    code: 'Pong! $pingms'
+  });</code></pre>
                 <button class="copy-btn">Copy</button>
             </li>
-            <li>
-                <p><strong>name</strong> - des</p>
-                <pre><code>code</code></pre>
-                <button class="copy-btn">Copy</button>
-            </li>
-            <li>
-                <p><strong>name</strong> - des</p>
-                <pre><code>code</code></pre>
-                <button class="copy-btn">Copy</button>
-            </li>
+            <!-- Add more commands here as needed -->
         </ul>
     </div>
 
