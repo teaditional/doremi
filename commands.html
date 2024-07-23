@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lilly - Open Source Discord Bot</title>
+    <title>doremi - Commands</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,23 +22,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-        }
-        header .logo {
-            text-align: left;
         }
         header .logo h1 {
             margin: 0;
             font-size: 1.8em;
-        }
-        header .logo p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-        header nav {
-            position: absolute;
-            right: 40px;
-            top: 20px;
         }
         header nav a {
             color: #fff;
@@ -48,37 +35,51 @@
         }
         .container {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
             padding: 40px;
         }
-        .content {
-            max-width: 600px;
-            margin-right: 50px;
-            text-align: right;
-        }
-        .content h1 {
+        h1 {
             color: #fff;
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 0.5em;
         }
-        .content p {
+        p {
             color: #ccc;
             font-size: 1.2em;
         }
-        .button {
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #444;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+        li p {
+            margin: 0;
+        }
+        pre {
+            background-color: #555;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            color: #fff;
+        }
+        button.copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
             background-color: #7289da;
             color: #fff;
-            padding: 15px 30px;
-            text-decoration: none;
+            border: none;
+            padding: 5px 10px;
             border-radius: 5px;
-            display: inline-block;
-            font-size: 1.2em;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
         }
-        .button:hover {
+        button.copy-btn:hover {
             background-color: #5a6fb8;
         }
         footer {
@@ -94,21 +95,84 @@
     <header>
         <div class="logo">
             <h1>lilly</h1>
-            <p>open-source Discord bot for managing & enhancing your server!</p>
         </div>
         <nav>
+            <a href="index.html">Home</a>
             <a href="information.html">Information</a>
-            <a href="commands.html">Commands</a>
             <a href="https://discord.gg/D7qvt8CFGB" target="_blank">Support</a>
         </nav>
     </header>
 
     <div class="container">
-        <div class="content">
-            <h1>doremi</h1>
-            <p>doremi is a versatile Discord bot designed to help you manage your server with ease. Whether you need moderation tools, fun commands, or custom features, doremi has you covered.</p>
-            <a href="https://github.com/teaditional/discordbot" class="button">Add to Discord</a>
-        </div>
+        <h1>Commands</h1>
+        <p>Here is a list of commands that you can use with doremi. You can also copy the code for each command:</p>
+        <ul>
+            <li>
+                <p><strong>avatar [user]</strong> - Gets the profile/avatar of you or the mentioned user.</p>
+                <pre><code>module.exports = {
+                    name: "avatar",
+                    $if: "old",
+                    code: `
+                  $color[#E6E6FA]
+                  $if[$mentioned[1]==]
+                  $author[$username's Avatar!]
+                  $image[$authorAvatar[2048]]
+                  $else
+                  $author[$username[$mentioned[1]]'s Avatar!]
+                  $image[$userAvatar[$mentioned[1];2048]]
+                  $endif
+                  $suppressErrors[{newEmbed:{description:Something went wrong!}{color:#E6E6FA}}]
+                  `,
+                };
+                </code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>servericon</strong> - Gets the guild's icon.</p>
+                <pre><code>module.exports = {
+                    name: "servericon",
+                    code: `
+                    $color[#E6E6FA]
+                    $author[$guildName[$guildID]'s Icon!]
+                    $image[$guildIcon[$guildID]]
+                    `,
+                  };
+                  </code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>ping</strong> - Gets a response with the latency.</p>
+                <pre><code>client.command({
+                    name: "ping",
+                    code: 'Pong! $pingms'
+                  });</code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>name</strong> - des</p>
+                <pre><code>code</code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>name</strong> - des</p>
+                <pre><code>code</code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+        </ul>
     </div>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const code = button.previousElementSibling.textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
