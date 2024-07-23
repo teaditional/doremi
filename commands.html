@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lilly - Commands</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.1em;
+        }
+        .container {
+            flex: 1;
+            padding: 40px;
+        }
+        h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        p {
+            color: #ccc;
+            font-size: 1.2em;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #444;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            position: relative;
+        }
+        li p {
+            margin: 0;
+        }
+        pre {
+            background-color: #555;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            color: #fff;
+        }
+        button.copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #7289da;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button.copy-btn:hover {
+            background-color: #5a6fb8;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>lilly</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="information.html">Information</a>
+            <a href="https://discord.gg/D7qvt8CFGB" target="_blank">Support</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Commands</h1>
+        <p>Here is a list of commands that you can use with lilly. You can also copy the code for each command:</p>
+        <ul>
+            <li>
+                <p><strong>avatar [user]</strong> - Gets the profile/avatar of you or the mentioned user.</p>
+                <pre><code>module.exports = {
+                    name: "avatar",
+                    $if: "old",
+                    code: `
+                  $color[#E6E6FA]
+                  $if[$mentioned[1]==]
+                  $author[$username's Avatar!]
+                  $image[$authorAvatar[2048]]
+                  $else
+                  $author[$username[$mentioned[1]]'s Avatar!]
+                  $image[$userAvatar[$mentioned[1];2048]]
+                  $endif
+                  $suppressErrors[{newEmbed:{description:Something went wrong!}{color:#E6E6FA}}]
+                  `,
+                };
+                </code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>servericon</strong> - Gets the guild's icon.</p>
+                <pre><code>module.exports = {
+                    name: "servericon",
+                    code: `
+                    $color[#E6E6FA]
+                    $author[$guildName[$guildID]'s Icon!]
+                    $image[$guildIcon[$guildID]]
+                    `,
+                  };
+                  </code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>ping</strong> - Gets a response with the latency.</p>
+                <pre><code>client.command({
+                    name: "ping",
+                    code: 'Pong! $pingms'
+                  });</code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>name</strong> - des</p>
+                <pre><code>code</code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+            <li>
+                <p><strong>name</strong> - des</p>
+                <pre><code>code</code></pre>
+                <button class="copy-btn">Copy</button>
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 lilly. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const code = button.previousElementSibling.textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
