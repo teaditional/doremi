@@ -113,17 +113,11 @@
     name: "avatar",
     $if: "old",
     code: `
-  $color[#E6E6FA]
-  $if[$mentioned[1]==]
-  $author[$username's Avatar!]
-  $image[$authorAvatar[2048]]
-  $else
-  $author[$username[$mentioned[1]]'s Avatar!]
-  $image[$userAvatar[$mentioned[1];2048]]
-  $endif
-  $suppressErrors[{newEmbed:{description:Something went wrong!}{color:#E6E6FA}}]
-  `,
-};</code></pre>
+    $author[$username[$mentioned[1;true]]'s avatar!]
+    $image[$userAvatar[$mentioned[1;true];2048;true;webp]
+    $suppressErrors[An error occured.]
+    `,
+  };</code></pre>
                 <button class="copy-btn">Copy</button>
             </li>
             <li>
@@ -134,16 +128,22 @@
     $color[#E6E6FA]
     $author[$guildName[$guildID]'s Icon!]
     $image[$guildIcon[$guildID]]
+    $suppressErrors[An error occured.]
     `,
   };</code></pre>
                 <button class="copy-btn">Copy</button>
             </li>
             <li>
-                <p><strong>ping</strong> - Gets a response with the latency.</p>
-                <pre><code>client.command({
-    name: "ping",
-    code: 'Pong! $pingms'
-  });</code></pre>
+                <p><strong>kiss [mention]</strong> - Gets a response with the latency.</p>
+                <pre><code>module.exports = {
+    name: "hug",
+    code: `
+    <@$authorID> *hugs* $if[$mentioned[1]==$authorID;themselves, how depressing.;<@$mentioned[1]>]
+    $author[$randomText[How cute!;Did $username[$authorID] get consent?]]
+    $image[https://teaditional.github.io/doremi/hugs/hug-$random[0;6].gif]
+    $suppressErrors[An error occured.]
+    `,
+  };</code></pre>
                 <button class="copy-btn">Copy</button>
             </li>
             <!-- Add more commands here as needed -->
