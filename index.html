@@ -18,7 +18,6 @@
             position: relative;
         }
 
-        /* Overlay for the background */
         body::before {
             content: '';
             position: absolute;
@@ -26,20 +25,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
-            z-index: 1; /* Ensure the overlay is behind content */
+            background-color: rgba(51, 51, 51, 0.8);
+            z-index: 1;
         }
 
         /* Header styles */
         header {
-            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+            background-color: rgba(51, 51, 51, 0.8);
             color: #fff;
             padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-            z-index: 2; /* Ensure the header is above the overlay */
+            z-index: 2;
         }
 
         header .logo {
