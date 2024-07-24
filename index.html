@@ -45,6 +45,14 @@
 
         header .logo {
             text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            max-width: 100px; /* Adjust the size as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 20px; /* Add space between the image and text */
         }
 
         header .logo h1 {
@@ -109,7 +117,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="logo.png" alt="doremilogo">
             <div>
                 <h1>Doremi</h1>
                 <p>open-source Discord bot for managing & enhancing your server!</p>
